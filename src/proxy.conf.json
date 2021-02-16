@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+    "target": "https://localhost:8100",
+    "changeOrigin": true,
+    "secure": false,
+    "pathRewrite": {"^/connpass/api" : ""}
+}
+}
