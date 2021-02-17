@@ -2,11 +2,8 @@ import { Component} from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-@Injectable()
-@Component({
-  selector: 'app-bookmark',
-  templateUrl: './bookmark.page.html',
-  styleUrls: ['./bookmark.page.scss'],
+@Injectable({
+  providedIn: 'root'
 })
 
 export class BookmarkService {

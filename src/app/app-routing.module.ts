@@ -7,8 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'event-detail',
-    loadChildren: () => import('./event-detail/event-detail.module').then( m => m.EventDetailPageModule)
+    path: 'bookmark',
+    loadChildren: () => import('./bookmark/bookmark.module').then( m => m.BookmarkPageModule)
   },
   
 ];

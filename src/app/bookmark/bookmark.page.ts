@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams,ToastController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, ToastController } from '@ionic/angular';
 import { BookmarkService } from '../bookmark.service';
-import { Router } from '@angular/router';
-
+import {Router} from '@angular/router'
 @Component({
-  selector: 'page-bookmark',
-  templateUrl: 'bookmark.html',
+  selector: 'app-bookmark',
+  templateUrl: './bookmark.page.html',
+  styleUrls: ['./bookmark.page.scss'],
 })
-export class BookmarkPage {
+export class BookmarkPage implements OnInit {
 
+
+
+  ngOnInit() {
+  }
   events: any[] = [];
 
   constructor(
     public router: Router,
-    public navParams: NavParams,
     public toastCtrl: ToastController,
     public bookmarkService: BookmarkService
 ){}
@@ -54,6 +57,6 @@ export class BookmarkPage {
       });
       (await toast).present();
     })
-   
+    //itemSliding.close();
   }
 }
