@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { NavController, NavParams,LoadingController } from '@ionic/angular';
+import { NavController, NavParams,LoadingController,ToastController,AlertController } from '@ionic/angular';
 import { EventService} from '../event.service';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,7 @@ export class SearchPage {
   constructor(
     public router:Router,
     //public navParams: NavParams,
+    public alertController: AlertController,
      public loadingCtrl: LoadingController,
      public eventService: EventService,
     ) { }
@@ -29,6 +30,7 @@ export class SearchPage {
   async getEvents(ev){
     const searchKeywords:string = this.keywords.trim();
     if (!searchKeywords) return;
+   
     const loading = this.loadingCtrl.create({
        
       message: "Please wait...",
@@ -37,6 +39,9 @@ export class SearchPage {
       (await loading).present();
     
     const kwds = searchKeywords.split(' ').filter(v => v !== "");
+    this.presentAlert(kwds);
+
+   // this.showToast(kwds);
     this.eventService.search(kwds).subscribe(async (body: any) => {
       if (body && body.events) {
         if (this.keywords === searchKeywords) {
@@ -53,5 +58,26 @@ export class SearchPage {
       eventId: event.event_id,
       event: event
     }]);
+  }
+
+  // async showToast(message){
+  //   const toast = this.toastCtrl.create({
+  //     message:  message,
+  //     duration: 1500
+  //   });
+  //   (await toast).present();
+
+
+  // }
+  async presentAlert(message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Search',
+      subHeader: 'Kyeword',
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

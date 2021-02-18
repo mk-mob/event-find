@@ -8,7 +8,7 @@
 <ion-content padding>
   <div class="searchbar" ion-fixed>
     <form action="" (keydown.enter)="getEvents($event)">
-        <ion-searchbar name="keywords" [(ngmodel)]="keywords" placeholder="キーワード検索"></ion-searchbar>
+        <ion-searchbar name="keywords" [(ngModel)]="keywords" placeholder="キーワード検索"></ion-searchbar>
     </form>
     <ion-list class="event-list">
       <ng-container *ngFor="let event of events">
