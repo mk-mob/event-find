@@ -1,5 +1,11 @@
 {
   "name": "event-find",
   "integrations": {},
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/connpass/api",
+      "proxyUrl": "https://connpass.com/api/v1/event"
+    }  
+  ]
 }
