@@ -44,6 +44,7 @@ export class SearchPage {
    // this.showToast(kwds);
     this.eventService.search(kwds).subscribe(async (body: any) => {
       if (body && body.events) {
+        this.presentAlert(body.events);
         if (this.keywords === searchKeywords) {
           this.events = body.events;
         }
